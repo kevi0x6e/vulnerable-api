@@ -1,17 +1,35 @@
-name: Node.js CI
+name: Common Pipeline
 
-on: [push]
+on:
+  push:
+    branches:
+      - '*'
+      - '!master'
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-      - run: npm install
-      - run: node index.js
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    - name: Deploy to production
+      run: |
+        # Coloque aqui os comandos necessários para o deploy
+        # Isso pode incluir o envio de arquivos para um servidor, a atualização de um serviço em nuvem, etc.
+        # Exemplo: rsync -r --delete-after ./dist/ user@your-server-ip:/path/to/deploy
+
+    - name: Cleanup
+      run: npm prune --production

@@ -4,7 +4,8 @@
   "description": "Vulnerable API with security vulnerabilities for educational purposesseed",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "node index.js"
   },
   "keywords": [
     "vulnerabilities",
