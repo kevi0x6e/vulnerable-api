@@ -4,8 +4,10 @@ It`s a simple API to study XSS tests
 
 ## How to install
 
+To install dependencies
 `npm install`
 
+To run the application
 `node index.js`
 
 ## How to use
